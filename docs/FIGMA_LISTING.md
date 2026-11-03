@@ -1,6 +1,6 @@
 # Figma Community listing draft
 
-Status: not submitted. The publishing account currently needs two-factor authentication. The owner confirmed the display name and MIT license; Community submission is deferred at the owner’s request.
+Status: draft prepared, not submitted. Two-factor authentication is enabled. Figma assigned plugin ID `1699346735533425751`. The name, icon, cover and data security answers are ready; acceptance of the Community Creator Agreement is pending the owner's confirmation.
 
 ## Name
 

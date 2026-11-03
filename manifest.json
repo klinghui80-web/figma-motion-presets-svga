@@ -1,5 +1,6 @@
 {
   "name": "figma动效预设-SVGA",
+  "id": "1699346735533425751",
   "api": "1.0.0",
   "main": "code.js",
   "ui": "ui.html",

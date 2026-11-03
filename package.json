@@ -1,6 +1,6 @@
 {
   "name": "figma-motion-presets-svga",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "private": true,
   "description": "Offline Figma motion presets with live compositing and SVGA, WebP, GIF, Lottie JSON and WebM export.",
   "engines": {

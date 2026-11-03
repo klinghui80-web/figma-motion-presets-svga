@@ -20,4 +20,4 @@
 7. Submit for review. A submitted plugin is not necessarily publicly installable until Figma approves it; record the actual status and URL shown by Figma.
 8. Once the Community listing exists, add the verified installation link to the README and release notes.
 
-The current production manifest intentionally has no fabricated ID. Local development continues to work while Community registration is pending.
+The production manifest uses Figma-assigned ID `1699346735533425751`. Keep this ID for future Community updates.

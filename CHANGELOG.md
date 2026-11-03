@@ -1,5 +1,11 @@
 # Changelog
 
+## 1.0.1 — 2026-11-03
+
+- Register the Figma-assigned plugin ID for Community submission.
+- Prepare the Community listing, icon, cover and data security disclosures.
+- Motion rendering and export behavior are unchanged.
+
 ## 1.0.0 — 2026-11-03
 
 First open-source release candidate.
