@@ -44,9 +44,23 @@ function drawSequenceEffect(target,t,scale,scene=sequenceScene()){
  if(prefs.order!=='below')drawBase();if(clip&&scene.sequenceVisible!==false)paintSequenceFrame(c,clip,prefs,t,W,H);if(prefs.order==='below')drawBase();
 }
 function loadSequenceSheet(item){
- if(!sequenceCache.has(item.id))sequenceCache.set(item.id,new Promise((resolve,reject)=>{
-  const image=new Image();image.onload=()=>resolve(image);image.onerror=()=>{sequenceCache.delete(item.id);reject(Error('素材读取失败，请重新选择。'))};image.src=item.data;
- }));
+ if(!sequenceCache.has(item.id))sequenceCache.set(item.id,(async()=>{
+  if(!/^https:\/\/raw\.githubusercontent\.com\/klinghui80-web\/figma-motion-presets-svga\/[0-9a-f]{40}\/assets\/sequences\/[a-z0-9-]+\.webp$/.test(item.data))throw Error('素材地址无效。');
+  const abort=new AbortController(),timeout=setTimeout(()=>abort.abort(),20000);let bytes;
+  try{
+   const response=await fetch(item.data,{credentials:'omit',referrerPolicy:'no-referrer',cache:'force-cache',signal:abort.signal});
+   if(!response.ok)throw Error('HTTP '+response.status);
+   bytes=new Uint8Array(await response.arrayBuffer());
+  }catch(e){throw Error('素材下载失败，请检查网络后重新选择。')}
+  finally{clearTimeout(timeout)}
+  const digest=new Uint8Array(await crypto.subtle.digest('SHA-256',bytes));
+  if(Array.from(digest,b=>b.toString(16).padStart(2,'0')).join('')!==item.sha256)throw Error('素材校验失败，请重新选择。');
+  return await new Promise((resolve,reject)=>{
+   const url=URL.createObjectURL(new Blob([bytes],{type:'image/webp'})),image=new Image();
+   image.onload=()=>{URL.revokeObjectURL(url);resolve(image)};
+   image.onerror=()=>{URL.revokeObjectURL(url);reject(Error('素材读取失败，请重新选择。'))};image.src=url;
+  });
+ })().catch(e=>{sequenceCache.delete(item.id);throw e}));
  return sequenceCache.get(item.id);
 }
 function sequenceMeta(){
@@ -88,7 +102,7 @@ function renderSequenceCards(){
 function initSequenceLibrary(){
  const panel=$('sequenceLibrary');panel.innerHTML=`
   <div class="segmented sequenceTabs"><button type="button" id="seqLibraryTab" class="active">素材库</button><button type="button" id="seqCustomTab">自定义帧</button></div>
-  <div id="seqLibraryPane"><input id="seqSearch" type="search" placeholder="搜索火焰、烟雾、光环…" aria-label="搜索序列帧素材"><div class="cats" id="seqFilters"></div><div class="sequenceCards" id="sequenceCards"></div><div class="sequenceFoot"><span id="sequenceCount"></span><span>透明素材 · CC0</span></div></div>
+  <div id="seqLibraryPane"><input id="seqSearch" type="search" placeholder="搜索火焰、烟雾、光环…" aria-label="搜索序列帧素材"><div class="cats" id="seqFilters"></div><div class="sequenceCards" id="sequenceCards"></div><div class="sequenceFoot"><span id="sequenceCount"></span><span>CC0 · 首次使用需联网</span></div></div>
   <div id="seqCustomPane" hidden><label class="sequenceUpload" for="seqFiles">导入 PNG 序列帧<input id="seqFiles" type="file" accept="image/png,.png" multiple></label><button type="button" id="seqFromFigma">读取 Figma 所选图层</button><div class="libraryNote">导入 2–240 张 PNG，或多选 Figma 中的各帧。按名称中的数字自然排序，例如 frame_2 在 frame_10 前；不同尺寸的帧按中心对齐。</div></div>
   <div class="libraryNote" id="sequenceInfo"></div>`;
  for(const label of ['全部','火焰','光效','烟雾','爆发','其他']){

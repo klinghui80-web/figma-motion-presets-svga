@@ -34,6 +34,7 @@ const ui=fs.readFileSync(path.join(root,'ui.html'),'utf8');
 new vm.Script(ui.match(/<script>\s*([\s\S]*?)<\/script>/)[1]);
 assert(ui.includes(engine),'embedded sequence engine must match its source');
 const embedded=JSON.parse(ui.match(/id="sequence-library-data">([\s\S]*?)<\/script>/)[1]);
+const hosting=JSON.parse(fs.readFileSync(path.join(root,'assets/sequences/hosting.json'),'utf8'));
 assert.strictEqual(catalog.length,24);assert.strictEqual(embedded.length,catalog.length);
 const ids=new Set();
 for(const c of catalog){
@@ -42,10 +43,11 @@ for(const c of catalog){
  const file=fs.readFileSync(path.join(root,'assets/sequences',c.file));
  assert.strictEqual(crypto.createHash('sha256').update(file).digest('hex'),c.sha256);
  assert.strictEqual(file.toString('ascii',0,4),'RIFF');assert.strictEqual(file.toString('ascii',8,12),'WEBP');
- const e=embedded.find(x=>x.id===c.id);assert(Buffer.from(e.data.split(',')[1],'base64').equals(file));
+ const e=embedded.find(x=>x.id===c.id);assert.strictEqual(e.data,hosting.baseUrl+c.file);assert.strictEqual(e.sha256,c.sha256);
  assert(Buffer.from(e.poster.split(',')[1],'base64').equals(fs.readFileSync(path.join(root,'assets/sequences',c.posterFile))));
 }
-console.log('PASS: 24 offline assets; valid grids and poster indices; provenance; hashes; embedded sheets/posters; UI syntax.');
+assert(fs.statSync(path.join(root,'ui.html')).size+fs.statSync(path.join(root,'code.js')).size<15_000_000);
+console.log('PASS: 24 original assets; immutable URLs and checksums; bundled posters; Community size limit; UI syntax.');
 // Exercise the real draw dispatch: standalone sequence needs no Figma image, and
 // changing opacity/placement must not alter which source frame is sampled.
 const calls=[],paint=new Proxy({}, {get:(_,key)=>(...args)=>calls.push([key,...args]),set:(obj,key,value)=>{obj[key]=value;calls.push([key,value]);return true}});

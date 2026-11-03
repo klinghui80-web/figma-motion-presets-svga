@@ -8,7 +8,9 @@ root = Path(__file__).resolve().parents[1]
 version = json.loads((root / 'package.json').read_text())['version']
 files = ['manifest.json', 'code.js', 'ui.html', 'LICENSE', 'THIRD_PARTY_NOTICES.md', 'PRIVACY.md']
 files += [str(p.relative_to(root)) for p in sorted((root / 'vendor').iterdir()) if 'LICENSE' in p.name]
-files += ['assets/sequences/SOURCES.md', 'assets/sequences/catalog.json']
+files += ['assets/sequences/SOURCES.md', 'assets/sequences/catalog.json', 'assets/sequences/hosting.json']
+if sum((root / name).stat().st_size for name in ['ui.html', 'code.js']) >= 15_000_000:
+    raise SystemExit('Plugin code exceeds the 15 MB Community limit')
 for file in files:
     if not (root / file).is_file():
         raise SystemExit(f'Missing release file: {file}')

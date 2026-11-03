@@ -1,6 +1,6 @@
 # Figma Community listing draft
 
-Status: draft prepared, not submitted. Two-factor authentication is enabled. Figma assigned plugin ID `1699346735533425751`. The name, icon, cover and data security answers are ready; acceptance of the Community Creator Agreement is pending the owner's confirmation.
+Status: not submitted successfully. Two-factor authentication is enabled and the owner accepted the Community Creator Agreement. Figma assigned plugin ID `1699346735533425751`. The listing, icon and cover are prepared, but submission was rejected because the offline plugin exceeds the 15 MB code limit. The owner approved downloading unchanged sequence sheets on demand from the public GitHub repository; a small build is prepared for resubmission. The original offline build remains available in release v1.0.0.
 
 ## Name
 
@@ -21,7 +21,7 @@ figma动效预设-SVGA以 SVGA 为默认导出格式，适合需要快速制作�
 • 单选模式逐个挑选效果；叠加模式组合多个独立效果层。
 • 每层独立调参，支持显隐与删除。
 • 粒子预设保留各自的样式、大小和不透明度变化。
-• 24 个离线序列帧素材；也可导入 PNG 序列，或读取 Figma 多选图层。
+• 24 个原始序列帧素材（按需加载）；也可导入 PNG 序列，或读取 Figma 多选图层。
 • 默认导出 SVGA 2.0；另可导出无损动态 WebP、GIF、Lottie JSON 和透明 WebM。
 
 格式说明
@@ -32,7 +32,8 @@ figma动效预设-SVGA以 SVGA 为默认导出格式，适合需要快速制作�
 
 隐私与使用
 • 动效和编码在本地插件沙箱处理；不上传文档或图片，不使用遥测或分析。
-• 内置素材和编码器离线可用。
+• 预设序列帧首次使用时从 GitHub 下载原始素材，并验证文件校验和；缩略图与编码器内置，已加载素材在本次会话中复用。
+• 仅下载静态素材，不发送文档、图片或导出结果；首次使用预设序列帧需要网络。
 • 工作内容保存在本次插件会话中；关闭前请导出需要保存的结果。
 • 优先使用较新的 Figma 桌面版本。
 
@@ -42,11 +43,11 @@ figma动效预设-SVGA以 SVGA 为默认导出格式，适合需要快速制作�
 
 Add motion to selected Figma layers, preview the result, adjust parameters and export animation.
 
-Use single mode to audition one preset at a time, or stack independent effects with per-layer settings, visibility and removal. Includes basic motion, sweep highlights, glow, lighting, particles, displacement and 24 offline CC0 animation sheets. Import PNG sequences or read multiple selected Figma layers as source frames.
+Use single mode to audition one preset at a time, or stack independent effects with per-layer settings, visibility and removal. Includes basic motion, sweep highlights, glow, lighting, particles, displacement and 24 original CC0 animation sheets loaded on demand. Import PNG sequences or read multiple selected Figma layers as source frames.
 
 SVGA 2.0 is the default output. Also supports lossless animated WebP, GIF, raster-frame Lottie JSON and transparent WebM. GIF has palette and transparency limits; Lottie embeds PNG frames rather than editable vector keyframes; WebM uses lossy VP8 video with a separate alpha channel and requires WebCodecs support.
 
-The plugin runs offline, does not upload artwork and has no analytics or telemetry. Working parameters remain in session memory. Please export before closing.
+Motion and export run locally. Preset sheets are downloaded from a fixed public GitHub commit and SHA-256 verified; loading them for the first time needs network access. The plugin does not upload artwork and has no analytics or telemetry. Working parameters remain in session memory. Please export before closing.
 
 ## Category and images
 
@@ -59,7 +60,7 @@ The plugin runs offline, does not upload artwork and has no analytics or telemet
 
 ## Security disclosure evidence
 
-- No external network access: `networkAccess.allowedDomains = ["none"]`.
+- Static asset downloads only: `networkAccess.allowedDomains = ["https://raw.githubusercontent.com"]`. Requests omit credentials and referrers, and do not transmit user artwork. GitHub/CDN receives normal request information such as the IP address and asset URL.
 - Reads selected Figma nodes as PNG for preview/export and user-selected frames for sequence import.
 - No hosted backend, account system, analytics, tracking or advertising.
 - No custom persistent storage; session state is held in memory.

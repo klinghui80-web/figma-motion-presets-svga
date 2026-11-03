@@ -2,7 +2,7 @@
 
 ![figma动效预设-SVGA](docs/images/cover-1920x1080.png)
 
-离线 Figma 动效插件，以 SVGA 为默认格式，支持实时预览、独立效果叠加及多格式导出。
+Figma 动效插件，以 SVGA 为默认格式，支持实时预览、独立效果叠加及多格式导出。预设序列帧从 GitHub 按需加载，动效合成与导出在本地完成。
 
 ## 安装与开发
 
@@ -54,7 +54,7 @@ npm run release:package
 
 WebP、GIF 的循环素材默认无限循环；仅含单次序列帧的场景导出为单次播放。Lottie / WebM 的循环由使用它们的播放器控制。GIF 以 10 毫秒、WebP / WebM 容器以毫秒表示时间；24 FPS 等非整数帧间隔使用累计时间取整，避免逐帧舍入造成持续时间漂移。
 
-附加编码库（gifenc、jSquash/libwebp）随插件离线内嵌，未开放网络权限，也不会上传素材。来源、版本、许可证与文件哈希见 `vendor/SOURCES.json` 和同目录许可证。运行 `python3 scripts/build-sequence-library.py` 会同时更新素材、场景和导出编码模块。
+附加编码库（gifenc、jSquash/libwebp）随插件离线内嵌，不会上传你的素材。来源、版本、许可证与文件哈希见 `vendor/SOURCES.json` 和同目录许可证。运行 `python3 scripts/build-sequence-library.py` 会同时更新缩略图、固定素材地址、场景和导出编码模块。为符合 Figma Community 的 15 MB 上限，24 个原始图集从 `assets/sequences/hosting.json` 指定的固定 GitHub 提交按需下载，SHA-256 与源码素材核对后再解码；同一会话内复用已加载图集。首次使用某个预设序列帧需要网络，自定义帧和动效合成不依赖此下载。
 
 运行 `node tests/exports.test.cjs` 验证附加格式编码、Lottie PNG 字节和可见帧、分数帧率时间轴、GIF 背景处理、WebM alpha 平面、冻结场景采样与离线内嵌。输出目录默认为 `/tmp/motion-exports-test`，可通过 `MOTION_EXPORT_OUTPUT` 指定。
 
@@ -66,7 +66,7 @@ WebP、GIF 的循环素材默认无限循环；仅含单次序列帧的场景导
 - 扫光继续使用所选对象的 PNG alpha 轮廓遮罩。自定义序列帧以最大宽高建立输出区域，各帧居中对齐，输出缩放只应用一次。
 - 发光由外轮廓光晕、底部氛围光、向外光线、星光/粒子和动态闪烁组成，提供独立参数组。
 - 发光导出时自动扩展画布边界，为轮廓外的光晕与光线留出空间。
-- 序列帧素材来自 OpenGameArt 的 CC0 资源；作者、原文件与播放设置见 [素材来源](assets/sequences/SOURCES.md)。内置素材离线可用。
+- 序列帧素材来自 OpenGameArt 的 CC0 资源；作者、原文件与播放设置见 [素材来源](assets/sequences/SOURCES.md)。缩略图内置，完整预设图集按需联网加载，原始文件、尺寸、透明度和帧率均保留。
 - 自定义光源在预览中点选发光位置；播放时每束光独立呼吸、摆动并带有流动高光。图层光照沿透明轮廓生成外向光线。光照/粒子/置换素材为本插件重建的 Canvas 动效，不是原插件提供的专有素材，需在预览中按项目调整。
 
 ## 粒子验证

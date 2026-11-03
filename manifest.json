@@ -10,7 +10,8 @@
   "documentAccess": "dynamic-page",
   "networkAccess": {
     "allowedDomains": [
-      "none"
-    ]
+      "https://raw.githubusercontent.com"
+    ],
+    "reasoning": "Download original CC0 animation sheets from a fixed public GitHub commit when selected. No user artwork or document data is transmitted."
   }
 }
