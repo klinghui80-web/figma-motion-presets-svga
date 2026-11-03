@@ -1,6 +1,6 @@
 # Figma Community listing draft
 
-Status: not submitted successfully. Two-factor authentication is enabled and the owner accepted the Community Creator Agreement. Figma assigned plugin ID `1699346735533425751`. The listing, icon and cover are prepared, but submission was rejected because the offline plugin exceeds the 15 MB code limit. The owner approved downloading unchanged sequence sheets on demand from the public GitHub repository; a small build is prepared for resubmission. The original offline build remains available in release v1.0.0.
+Status: submitted for review on 2026-11-03. Figma displayed “We have received your submission” and “Our team will review this resource and contact you when it’s ready.” Public installation is pending approval. Community URL: https://www.figma.com/community/plugin/1699346735533425751. Publisher: 阿咻 (personal creator). The owner accepted the Community Creator Agreement. Code uses Figma-assigned ID `1699346735533425751`; the submitted build loads unchanged sequence sheets on demand and is approximately 1.05 MB. The original offline build remains available in GitHub release v1.0.0.
 
 ## Name
 

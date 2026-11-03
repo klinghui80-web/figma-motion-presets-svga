@@ -6,7 +6,9 @@ Figma 动效插件，以 SVGA 为默认格式，支持实时预览、独立效�
 
 ## 安装与开发
 
-直接使用：在 [GitHub Releases](https://github.com/klinghui80-web/figma-motion-presets-svga/releases) 下载发布 ZIP，解压后在 Figma 桌面版的 Plugins → Development → Import plugin from manifest 中选择 `manifest.json`。已提交构建好的 `ui.html`，运行插件无需安装开发依赖。Figma Community 版本尚未提交。
+直接使用：在 [GitHub Releases](https://github.com/klinghui80-web/figma-motion-presets-svga/releases) 下载发布 ZIP，解压后在 Figma 桌面版的 Plugins → Development → Import plugin from manifest 中选择 `manifest.json`。已提交构建好的 `ui.html`，运行插件无需安装开发依赖。[Figma Community](https://www.figma.com/community/plugin/1699346735533425751) 已于 2026-11-03 提交审核，公开安装需等待 Figma 批准。
+
+需要完全离线使用时，可下载 [v1.0.0](https://github.com/klinghui80-web/figma-motion-presets-svga/releases/tag/v1.0.0)；该版本内嵌全部素材，因体积限制仅通过 GitHub 提供。
 
 问题反馈和功能建议请提交到 [GitHub Issues](https://github.com/klinghui80-web/figma-motion-presets-svga/issues)。
 
