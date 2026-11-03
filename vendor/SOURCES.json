@@ -1,0 +1,18 @@
+{
+  "gifenc": {
+    "version": "1.0.3",
+    "url": "https://registry.npmjs.org/gifenc/-/gifenc-1.0.3.tgz",
+    "license": "MIT"
+  },
+  "webp": {
+    "version": "1.5.0",
+    "url": "https://registry.npmjs.org/@jsquash/webp/-/webp-1.5.0.tgz",
+    "license": "Apache-2.0 / libwebp BSD"
+  },
+  "sha256": {
+    "gifenc.cjs": "ab1ff6a05a05ddb85f642ae4c3f96d9e69e56fcfc472982172b088344e0fdb59",
+    "webp-encoder.js": "098b0a1ee75616d71690d4b94994bd8716273bb530891727e4aba02b3e91e8b2",
+    "webp-encoder.wasm": "b6085bb6702f144e9dc6016d58d230b34a84976bf0d080b7390b4b4b137d6ab7",
+    "webp-options.js": "2e5477b87f43de21a4b32664e57c1de836c4c17def63ac5980ca3769e3bb561a"
+  }
+}

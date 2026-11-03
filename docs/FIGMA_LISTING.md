@@ -1,0 +1,69 @@
+# Figma Community listing draft
+
+Status: not submitted. The publishing account currently needs two-factor authentication. The owner confirmed the display name and MIT license; Community submission is deferred at the owner’s request.
+
+## Name
+
+figma动效预设-SVGA
+
+## Tagline
+
+在 Figma 中预览、叠加动效，一键导出 SVGA / WebP / GIF / Lottie / WebM
+
+## Description (中文)
+
+给 Figma 图层添加动效，实时预览，调整参数，再导出动画。
+
+figma动效预设-SVGA以 SVGA 为默认导出格式，适合需要快速制作图片动效、粒子装饰和序列帧合成的设计师。
+
+主要功能
+• 基础动效、扫光、发光、光照、粒子、序列帧、置换和其他效果。
+• 单选模式逐个挑选效果；叠加模式组合多个独立效果层。
+• 每层独立调参，支持显隐与删除。
+• 粒子预设保留各自的样式、大小和不透明度变化。
+• 24 个离线序列帧素材；也可导入 PNG 序列，或读取 Figma 多选图层。
+• 默认导出 SVGA 2.0；另可导出无损动态 WebP、GIF、Lottie JSON 和透明 WebM。
+
+格式说明
+• 需要保留颜色、半透明和柔光时，优先选择 SVGA 或无损 WebP。
+• GIF 受 256 色和单比特透明度限制，可选择黑色、白色或透明背景。
+• Lottie JSON 内嵌逐帧 PNG，保留画面，但不是可编辑的矢量关键帧，文件可能较大。
+• WebM 使用高质量有损视频编码，透明播放需要播放器支持，编码需要运行环境支持 WebCodecs / VP8。
+
+隐私与使用
+• 动效和编码在本地插件沙箱处理；不上传文档或图片，不使用遥测或分析。
+• 内置素材和编码器离线可用。
+• 工作内容保存在本次插件会话中；关闭前请导出需要保存的结果。
+• 优先使用较新的 Figma 桌面版本。
+
+内置序列帧来自 para 和 Soluna Software 的 CC0 资源，完整来源与第三方许可证随开源项目提供。
+
+## Description (English)
+
+Add motion to selected Figma layers, preview the result, adjust parameters and export animation.
+
+Use single mode to audition one preset at a time, or stack independent effects with per-layer settings, visibility and removal. Includes basic motion, sweep highlights, glow, lighting, particles, displacement and 24 offline CC0 animation sheets. Import PNG sequences or read multiple selected Figma layers as source frames.
+
+SVGA 2.0 is the default output. Also supports lossless animated WebP, GIF, raster-frame Lottie JSON and transparent WebM. GIF has palette and transparency limits; Lottie embeds PNG frames rather than editable vector keyframes; WebM uses lossy VP8 video with a separate alpha channel and requires WebCodecs support.
+
+The plugin runs offline, does not upload artwork and has no analytics or telemetry. Working parameters remain in session memory. Please export before closing.
+
+## Category and images
+
+- Category: Design tools (choose the closest available category in the publishing dialog).
+- Icon: `docs/images/icon-128.png` (128 × 128).
+- Cover: `docs/images/cover-1920x1080.png` (1920 × 1080).
+- Do not upload local `artifacts/` screenshots or private Figma files.
+- Free Community release; source repository and license to be finalized by the owner.
+- Support: use the public GitHub Issues URL after the repository is created; no personal email needs to be added to source files.
+
+## Security disclosure evidence
+
+- No external network access: `networkAccess.allowedDomains = ["none"]`.
+- Reads selected Figma nodes as PNG for preview/export and user-selected frames for sequence import.
+- No hosted backend, account system, analytics, tracking or advertising.
+- No custom persistent storage; session state is held in memory.
+- Export files are saved through the platform download mechanism.
+- Privacy statement: `PRIVACY.md`.
+
+Official publishing guide: https://help.figma.com/hc/en-us/articles/360042293394-Publish-classic-plugins-to-the-Figma-Community

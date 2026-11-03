@@ -1,0 +1,78 @@
+{
+  "description": "Captured before replacement from the existing other/shine effect on the composition test translucent source.",
+  "cases": [
+    {
+      "t": 0,
+      "scale": 1,
+      "changes": {},
+      "sha256": "8ee95b2d996b2d489b56971ed17aaf236e5085376bb7ee65642654534e2d4cd8"
+    },
+    {
+      "t": 0.23,
+      "scale": 1,
+      "changes": {},
+      "sha256": "708c94b009bab1676de6059507db0b7a69295e335ebb0686344487ded50cc528"
+    },
+    {
+      "t": 0.55,
+      "scale": 1,
+      "changes": {},
+      "sha256": "600a2a4c771606568acf83bd0e67f2259f702b2be297b2c76f5a9d357700d581"
+    },
+    {
+      "t": 0.79,
+      "scale": 1,
+      "changes": {},
+      "sha256": "f867aa78cf53b2a2b97e15b8d05786dd0fc84a3889a6d1eb5d9a13815b523e47"
+    },
+    {
+      "t": 0.25,
+      "scale": 0.5,
+      "changes": {},
+      "sha256": "6f7887b2471a01f68d3ff9a8cd20d7915fbd15c5ce1d8fdf15b909b9ac7fc360"
+    },
+    {
+      "t": 0.35,
+      "scale": 2,
+      "changes": {},
+      "sha256": "47cbddc31382648b8d3b30e77a722bbbcc23922f9356d26225eda86b25e64917"
+    },
+    {
+      "t": 0.31,
+      "scale": 1,
+      "changes": {
+        "ef_size": 8,
+        "ef_intensity": 120,
+        "ef_speed": 200,
+        "fxColor": "#ff8800"
+      },
+      "sha256": "a1a30d46c4987e41a595478d1eb32b42d65c6ea3f727163bff4f2c10eaa5c382"
+    },
+    {
+      "t": 0.1,
+      "scale": 1,
+      "changes": {
+        "delay": 30
+      },
+      "sha256": "c28d0442cb90d135c4b08c4f2b23c994f40cd59e173f086d803e6f3540e1c6ac"
+    },
+    {
+      "t": 0.53,
+      "scale": 1,
+      "changes": {
+        "duration": 1.4,
+        "delay": 20,
+        "ef_speed": 65
+      },
+      "sha256": "f1ed5eea88cfb27522e6281b33fea08cd02ec984bf2716aa9c15489d3a05429b"
+    },
+    {
+      "t": 0.3,
+      "scale": 1,
+      "changes": {
+        "ef_intensity": 0
+      },
+      "sha256": "c28d0442cb90d135c4b08c4f2b23c994f40cd59e173f086d803e6f3540e1c6ac"
+    }
+  ]
+}
