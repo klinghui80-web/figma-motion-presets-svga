@@ -6,7 +6,9 @@
 
 ## 安装与开发
 
-直接使用：下载本项目的发布 ZIP（首次发布前可下载源码），解压后在 Figma 桌面版的 Plugins → Development → Import plugin from manifest 中选择 `manifest.json`。已提交构建好的 `ui.html`，运行插件无需安装开发依赖。
+直接使用：在 [GitHub Releases](https://github.com/klinghui80-web/figma-motion-presets-svga/releases) 下载发布 ZIP，解压后在 Figma 桌面版的 Plugins → Development → Import plugin from manifest 中选择 `manifest.json`。已提交构建好的 `ui.html`，运行插件无需安装开发依赖。Figma Community 版本尚未提交。
+
+问题反馈和功能建议请提交到 [GitHub Issues](https://github.com/klinghui80-web/figma-motion-presets-svga/issues)。
 
 参与开发需要 Node.js 22+、npm 和 Python 3.10+：
 

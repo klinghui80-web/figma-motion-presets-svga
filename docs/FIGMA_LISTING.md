@@ -54,8 +54,8 @@ The plugin runs offline, does not upload artwork and has no analytics or telemet
 - Icon: `docs/images/icon-128.png` (128 × 128).
 - Cover: `docs/images/cover-1920x1080.png` (1920 × 1080).
 - Do not upload local `artifacts/` screenshots or private Figma files.
-- Free Community release; source repository and license to be finalized by the owner.
-- Support: use the public GitHub Issues URL after the repository is created; no personal email needs to be added to source files.
+- Free Community release. Source: https://github.com/klinghui80-web/figma-motion-presets-svga. Project code uses MIT; third-party licenses remain separate.
+- Support: https://github.com/klinghui80-web/figma-motion-presets-svga/issues. No personal email needs to be added to source files.
 
 ## Security disclosure evidence
 
